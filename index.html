@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фармация 17 - Поиск препаратов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f0f2f5;
+            background-image: url('https://i.imgur.com/Xiz7DM2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.93);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .logo {
+            margin-bottom: 20px;
+            max-width: 250px;
+        }
+        .search-box {
+            margin: 30px 0;
+        }
+        input {
+            padding: 12px;
+            width: 80%;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #128C7E;
+        }
+        .discount {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(37, 211, 102, 0.1);
+            border-radius: 5px;
+            border-left: 4px solid #25D366;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://i.imgur.com/XYzVl9E.png" alt="Фармация 17" class="logo">
+        <h2>Поиск препаратов</h2>
+        <p>Введите название препарата для уточнения цены и наличия</p>
+        <div class="search-box">
+            <input type="text" id="drugName" placeholder="Например: Нурофен 200мг">
+            <button onclick="searchDrug()">Узнать цену</button>
+        </div>
+        <div class="discount">
+            <b>🎁 При заказе через сайт — скидка 15%!</b>
+        </div>
+    </div>
 
+    <script>
+        function searchDrug() {
+            const drugName = document.getElementById('drugName').value.trim();
+            if (drugName) {
+                const phone = "+77771403909"; // Замените на ваш номер!
+                const message = `Здравствуйте! Ищу препарат: ${drugName}. Подскажите цену и наличие.`;
+                const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+                window.location.href = whatsappUrl;
+            } else {
+                alert("Пожалуйста, введите название препарата");
+            }
+        }
+        document.getElementById('drugName').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchDrug();
+            }
+        });
+    </script>
+</body>
+</html>
